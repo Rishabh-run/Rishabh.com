@@ -20,10 +20,9 @@
             color: #333;
             margin-bottom: 20px;
         }
-        .notepad {
+        .notepad, .report-card {
             width: 80%;
             max-width: 800px;
-            height: 300px;
             border: 2px solid #ccc;
             border-radius: 5px;
             padding: 10px;
@@ -31,6 +30,9 @@
             color: #333;
             background-color: #fff;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .notepad {
+            height: 300px;
             resize: none;
         }
         .controls {
@@ -58,7 +60,7 @@
         button:hover {
             background-color: #0056b3;
         }
-        select, input[type="color"] {
+        select, input[type="color"], input[type="text"], input[type="number"] {
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
@@ -73,6 +75,22 @@
             border: 1px solid black;
             background-color: #fafafa;
             margin-top: 20px;
+        }
+        .report-card {
+            display: none;
+            margin-top: 20px;
+        }
+        .report-card table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .report-card th, .report-card td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        .report-card th {
+            background-color: #f2f2f2;
         }
     </style>
 </head>
@@ -108,9 +126,36 @@
         <div>
             <button id="snakeGameBtn">Play Snake Game</button>
         </div>
+        <div>
+            <button id="showReportCardBtn">Create Report Card</button>
+        </div>
     </div>
     <p id="statusMsg"></p>
     <canvas id="snakeCanvas" width="400" height="400"></canvas>
+
+    <div class="report-card" id="reportCard">
+        <h2>Report Card</h2>
+        <table id="reportCardTable">
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Marks Obtained</th>
+                </tr>
+            </thead>
+            <tbody id="reportCardBody">
+                <!-- Rows will be added here -->
+            </tbody>
+        </table>
+        <div>
+            <input type="text" id="subjectName" placeholder="Subject Name">
+            <input type="number" id="subjectMarks" placeholder="Marks Obtained">
+            <button id="addSubjectBtn">Add Subject</button>
+        </div>
+        <div>
+            <button id="calculateTotalBtn">Calculate Total</button>
+            <p id="totalMarks"></p>
+        </div>
+    </div>
 
     <script>
         const notepad = document.getElementById('notepad');
@@ -123,9 +168,17 @@
         const downloadBtn = document.getElementById('downloadBtn');
         const fileInput = document.getElementById('fileInput');
         const snakeGameBtn = document.getElementById('snakeGameBtn');
+        const showReportCardBtn = document.getElementById('showReportCardBtn');
         const statusMsg = document.getElementById('statusMsg');
         const snakeCanvas = document.getElementById('snakeCanvas');
         const ctx = snakeCanvas.getContext('2d');
+        const reportCard = document.getElementById('reportCard');
+        const reportCardBody = document.getElementById('reportCardBody');
+        const subjectName = document.getElementById('subjectName');
+        const subjectMarks = document.getElementById('subjectMarks');
+        const addSubjectBtn = document.getElementById('addSubjectBtn');
+        const calculateTotalBtn = document.getElementById('calculateTotalBtn');
+        const totalMarks = document.getElementById('totalMarks');
 
         textSize.addEventListener('change', () => {
             notepad.style.fontSize = textSize.value;
@@ -188,24 +241,13 @@
         snakeGameBtn.addEventListener('click', () => {
             notepad.style.display = 'none';
             snakeCanvas.style.display = 'block';
+            reportCard.style.display = 'none';
             statusMsg.textContent = '';
             startSnakeGame();
         });
 
-        function startSnakeGame() {
-            const snake = [{ x: 200, y: 200 }];
-            let dx = 10;
-            let dy = 0;
-            let food = createFood();
-            let changingDirection = false;
-
-            document.addEventListener('keydown', changeDirection);
-
-            function drawSnakePart(snakePart) {
-                ctx.fillStyle = 'lightgreen';
-                ctx.strokeStyle = 'darkgreen';
-                ctx.fillRect(snakePart.x, snakePart.y, 10, 10);
-                ctx.strokeRect(snakePart.x, snakePart.y, 10, 10);
-            }
-
-            function drawSnake
+        showReportCardBtn.addEventListener('click', () => {
+            notepad.style.display = 'none';
+            snakeCanvas.style.display = 'none';
+            reportCard.style.display = 'block';
+            statusMsg.textContent =[_{{{CITATION{{{_1{](https://github.com/EleanorEllingson/web-dev/tree/b2f2a382e77a20fd6895677c8b8f402ac4bae352/7-bank-project%2F1-template-route%2Ftranslations%2FREADME.ko.md)[_{{{CITATION{{{_2{](https://github.com/PricopeStefan/DiarMe/tree/06a83de170c228745ab61a21d9c35f12cc7c34d7/application%2Fviews%2Fhome_edit_view.php)[_{{{CITATION{{{_3{](https://github.com/pritamSankhari/ID_Card_PDF_Automation_System_Free/tree/bb29b95e3e327e28b0053a2fe2f47c7de9ef2246/idcard_system%2Flayout_editor.php)
